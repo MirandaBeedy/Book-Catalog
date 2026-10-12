@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Book Reviews</h2>
+
+    <ul>
+        {% for review in reviews %}
+            <li>
+                <strong>{{ review.book.title }}</strong><br>
+                Publisher: {{ review.book.publisher.name }}<br>
+                Reviewed by: {{ review.reviewer_name }}<br>
+                Rating: {{ review.rating }}/5<br>
+                Review: {{ review.body }}
+            </li>
+        {% empty %}
+            <li>No reviews available yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

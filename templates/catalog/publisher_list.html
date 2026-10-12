@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Publishers</h2>
+
+    {% for publisher in publishers %}
+        <h3>{{ publisher.name }}</h3>
+
+        <ul>
+            {% for book in publisher.book_set.all %}
+                <li>{{ book.title }}</li>
+            {% empty %}
+                <li>No books for this publisher yet.</li>
+            {% endfor %}
+        </ul>
+    {% empty %}
+        <p>No publishers available yet.</p>
+    {% endfor %}
+{% endblock %}

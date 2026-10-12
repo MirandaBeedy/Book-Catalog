@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Book Catalog</title>
+</head>
+<body>
+    <h1>My Book Catalog</h1>
+    <p>Welcome to my book collection!</p>
+
+    <h2>Books</h2>
+    <ul>
+        {% for book in books %}
+            
+<li>
+    {{ book.title }} by {{ book.author }}
+    ({{ book.publication_year }})
+    - Published by {{ book.publisher.name }}
+</li>
+
+        {% empty %}
+            <li>No books available yet.</li>
+        {% endfor %}
+    </ul>
+
+    
+<h2>Book Reviews</h2>
+<ul>
+    {% for review in reviews %}
+        <li>
+            <strong>{{ review.book.title }}</strong><br>
+            Reviewed by: {{ review.reviewer_name }}<br>
+            Rating: {{ review.rating }}/5<br>
+            Review: {{ review.body }}
+        </li>
+    {% empty %}
+        <li>No reviews available yet.</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
